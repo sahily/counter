@@ -23,7 +23,7 @@ sbit sl3 = P2^1;
 sbit sl4 = P2^0;
 
 unsigned int numberList[10] = {
-								  0xFC,   //0         
+                                  0xFC,   //0         
                                   0x60,   //1
                                   0xDA,   //2 
                                   0xF2,   //3
@@ -33,9 +33,9 @@ unsigned int numberList[10] = {
                                   0xE0,   //7
                                   0xFE,   //8
                                   0xF6    //9
-					      	  };
+                              };
 
-unsigned int numbersToDisplay[4] = {'0','0','0','0'};	//the thousands, hundreds, tens, and ones place of the count number
+unsigned int numbersToDisplay[4] = {'0','0','0','0'};   //the thousands, hundreds, tens, and ones place of the count number
 
 unsigned int digitSelector[4][4] = {
                                       0,1,1,1,   //select 1st digit on 7seg display
@@ -45,20 +45,20 @@ unsigned int digitSelector[4][4] = {
                                    };
 
 unsigned int n;   /* This is just to make multiple iterations of the display function in the main function.  */
-				  /* The number of iterations will control the speed of the count.							 */
+                  /* The number of iterations will control the speed of the count.                           */
 
 
 
 void main()
 {
-	while(1)
-	{
-		for(n=0;n<29;n++)
-		{
-			display();
-		}
-		incrementOnes();
-	}
+    while(1)
+    {
+        for(n=0;n<29;n++)
+        {
+            display();
+        }
+        incrementOnes();
+    }
 }
 
 
@@ -74,12 +74,12 @@ void main()
 
 void delay(unsigned int k)
 {
-	unsigned int i;
-	unsigned int j;
-	for(i=0;i<k;i++)
-	{
-		for(j=0;j<120;j++);
-	}
+    unsigned int i;
+    unsigned int j;
+    for(i=0;i<k;i++)
+    {
+        for(j=0;j<120;j++);
+    }
 }
 
 
@@ -90,24 +90,24 @@ void delay(unsigned int k)
  * selects one digit on the 7-segment display at a time and displays a number on the selected digit
  *
  */
-	  
+      
 void display(void)
-{		
-	unsigned char x;
+{       
+    unsigned char x;
 
-	for(x=0;x<4;x++)
-	{
-		sl1 = digitSelector[x][0];
-		sl2 = digitSelector[x][1];
-		sl3 = digitSelector[x][2];
-		sl4 = digitSelector[x][3];		/* Digit is selected when its pin is reset.        */ 
-                                   		/* Only one of these is selected in each iteration */
+    for(x=0;x<4;x++)
+    {
+        sl1 = digitSelector[x][0];
+        sl2 = digitSelector[x][1];
+        sl3 = digitSelector[x][2];
+        sl4 = digitSelector[x][3];      /* Digit is selected when its pin is reset.        */ 
+                                        /* Only one of these is selected in each iteration */
 
-		P0 = numberList[numbersToDisplay[x]-'0'];
+        P0 = numberList[numbersToDisplay[x]-'0'];
 
-		delay(4);						/* 4 milliseconds seems about the right amount of time */
-                                  	    /* for a smooth transition to the next digit/number.   */
-	}				
+        delay(4);                       /* 4 milliseconds seems about the right amount of time */
+                                        /* for a smooth transition to the next digit/number.   */
+    }               
 }
 
 
@@ -122,11 +122,11 @@ void display(void)
 
 void incrementOnes(void)
 {
-	numbersToDisplay[3]++;   
-	if(numbersToDisplay[3] == '9'+1)
-	{
-		incrementTens();
-	}	
+    numbersToDisplay[3]++;   
+    if(numbersToDisplay[3] == '9'+1)
+    {
+        incrementTens();
+    }   
 }
 
 
@@ -142,12 +142,12 @@ void incrementOnes(void)
 
 void incrementTens(void)
 {
-	numbersToDisplay[3] = '0';
-	numbersToDisplay[2]++;
-	if(numbersToDisplay[2] == '9'+1)
-	{
-		incrementHundreds();
-	}
+    numbersToDisplay[3] = '0';
+    numbersToDisplay[2]++;
+    if(numbersToDisplay[2] == '9'+1)
+    {
+        incrementHundreds();
+    }
 }
 
 
@@ -163,12 +163,12 @@ void incrementTens(void)
 
 void incrementHundreds(void)
 {
-	numbersToDisplay[2] = '0';
-	numbersToDisplay[1]++;
-	if(numbersToDisplay[1] == '9'+1)
-	{
-		incrementThousands();
-	}
+    numbersToDisplay[2] = '0';
+    numbersToDisplay[1]++;
+    if(numbersToDisplay[1] == '9'+1)
+    {
+        incrementThousands();
+    }
 }
 
 
@@ -184,12 +184,12 @@ void incrementHundreds(void)
 
 void incrementThousands(void)
 {
-	numbersToDisplay[1] = '0';
-	numbersToDisplay[0]++;
-	if(numbersToDisplay[0] == '9'+1)
-	{
-		resetToZero();
-	}
+    numbersToDisplay[1] = '0';
+    numbersToDisplay[0]++;
+    if(numbersToDisplay[0] == '9'+1)
+    {
+        resetToZero();
+    }
 }
 
 
@@ -203,8 +203,8 @@ void incrementThousands(void)
 
 void resetToZero(void)
 {
-	numbersToDisplay[0] = '0';
-	numbersToDisplay[1] = '0';
-	numbersToDisplay[2] = '0';
-	numbersToDisplay[3] = '0';
+    numbersToDisplay[0] = '0';
+    numbersToDisplay[1] = '0';
+    numbersToDisplay[2] = '0';
+    numbersToDisplay[3] = '0';
 }
