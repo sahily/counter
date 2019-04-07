@@ -1,7 +1,7 @@
 /*
  * counter.c
  *
- * Created: 4/5/2019 9:35:06 PM
+ * Created: 4/6/2019 8:46:08 PM
  * Author : Sahil S. Mahajan
  * Description: Simple counter 0000 to 9999
  *
