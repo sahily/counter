@@ -21,7 +21,7 @@ Simple counter 0000 to 9999
 
 ### Example
 
-Count starts from 0000 and steadily increments thereafter. In this example the current count is 9,268.
+Count starts from 0000 and steadily increments thereafter. In this example the current count is 84.
 
 <img src="counter_pic.jpg" width="400">
 
