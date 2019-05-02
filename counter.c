@@ -17,10 +17,10 @@ void incrementHundreds(void);
 void incrementThousands(void);
 void resetToZero(void);
 
-sbit sl1 = P2^3;
-sbit sl2 = P2^2;
-sbit sl3 = P2^1;
-sbit sl4 = P2^0;
+sbit sl1 = P2^7;
+sbit sl2 = P2^6;
+sbit sl3 = P2^5;
+sbit sl4 = P2^4;
 
 unsigned int numberList[10] = {
                                   0xFC,   //0         
